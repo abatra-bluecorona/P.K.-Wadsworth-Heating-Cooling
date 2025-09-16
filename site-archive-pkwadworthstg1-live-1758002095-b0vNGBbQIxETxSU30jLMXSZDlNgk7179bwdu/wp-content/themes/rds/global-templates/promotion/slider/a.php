@@ -109,38 +109,32 @@
                                  $requestButtonTitle = get_post_meta($post->ID, "request_button_title", true);
                                  ?>
                         <div class="swiper-slide h-auto color_primary_bg p-3" style="background-color: <?php echo $color; ?>;">
-                           <div class="h-100 color_white_bg p-2 pb-3 coupon-container"  style="border: 3px dashed #F5A422;">
-                                                            <div class="h-100">
-                                                                <div class="coupon_name text-center color_secondary_bg">
-                                                                <?php if (!empty($title)) { ?>
-                                                                    <h4 class="mb-0 pb-1 coupon_title coupon_offer"><?php echo esc_html($title); ?></h4>
-                                                                <?php } ?>
-                                                                
-                                                                <?php if (!empty($heading)) { ?>
-                                                                    <span class="d-block text-center pb-2 px-lg-0 px-2 coupon_subtitle coupon_heading text_18 line_height_20"><?php echo esc_html($heading); ?></span>
-                                                                <?php } ?>
-                                                               
-                                                                <a class="bc_coupon_content_parent cursor-pointer bc_toggle_btn_wide  text-decoration-none bc_text_18 bc_line_height_25 bc_font_alt_1 bc_text_medium true_white--imp text-uppercase team-conten" data-toggle="#read_more-<?php echo $i; ?>"><span class="text_23 line_height_22 text_medium mt-3">More info</span> <i class="icon-plus"></i> </a>
-                                                                <div class="bc_coupon_content d-none mt-2" id="read_more-<?php echo $i; ?>">
-                                                                <?php if (!empty($subheading)) { ?>
-                                                                    <span class="d-block text-center px-lg-0 px-2 coupon_sub_heading"><?php echo esc_html($subheading); ?></span>
-                                                                <?php } ?>
-                                                                <?php if ($noexpiry != 1 && !empty($date)) { ?>
-                                                                    <span class="d-block coupon_expiry"><?php echo "Expires " . esc_html($date); ?></span>
-                                                                <?php } ?>
-                                                                <?php if (!empty($footer_heading)) { ?>
-                                                                    <span class="d-block coupon_disclaimer"><?php echo esc_html($footer_heading); ?></span>
-                                                                <?php } ?>
-                                                                </div>
-                                                                </div>
-                                                            <?php if (!empty($requestButtonLink) || !empty($requestButtonTitle)) { ?>
-                                                                    <a data-bs-toggle="<?php echo empty($requestButtonLink) ? "modal" : ""; ?>" data-bs-target="<?php echo empty($requestButtonLink) ? "#request_coupon_form_template_a" : ""; ?>" <?php echo empty($requestButtonLink) ? 'onclick="couponButtonClick(this);"' : 'href="' . esc_url($requestButtonLink) . '"'; ?> <?php echo empty($requestButtonTitle) ? 'aria-label="Request Service"' : 'aria-label="' . esc_attr($requestButtonTitle) . '"'; ?> class="btn btn-secondary mt-2 request-service" <?php echo $open_new_tab == 1 ? 'target="_blank"' : ""; ?>>
-                                                                        <?php echo empty($requestButtonTitle) ? "Request Service" : esc_html($requestButtonTitle); ?>
-                                                                        <!-- <i class="icon-chevron-right text_18 line_height_18 ms-2 mt-n1"></i> -->
-                                                                    </a>
-                                                                <?php } ?>
-                                                                </div>
-                                                        </div>
+                           <div class="coupon_name border-dashed-5 h-coupan-100 py-4 p-4 px-lg-0 text-center">
+                              <?php if (!empty($heading)) { ?>
+                              <span class="coupon_subtitle d-block text-center px-lg-0 px-3 pt-lg-0 pt-2 coupon_heading"><?php echo $heading; ?></span>
+                              <?php } ?>
+                              <?php if (!empty($subheading)) { ?>
+                              <span class="d-block text-center py-2 px-lg-0 px-2 pt-lg-0 pt-2 my-lg-1 coupon_sub_heading "><?php echo $subheading; ?></span>
+                              <?php } ?>
+                              <?php if (!empty($title)) { ?>
+                              <h4 class="coupon_title mb-0 pb-lg-3 pt-lg-0 py-3 coupon_offer"><?php echo $title; ?></h4>
+                              <?php } ?>
+                              <a data-bs-toggle="<?php echo empty($requestButtonLink) ? "modal" : ""; ?>" 
+                                 data-bs-target="<?php echo empty($requestButtonLink) ? "#slider_request_coupon_form" : ""; ?>" 
+                                 <?php echo empty($requestButtonLink) ? 'onclick="couponButtonClick(this);"' : 'href="' . $requestButtonLink . '"'; ?>
+                                 <?php echo empty($requestButtonTitle) ? 'aria-label="Request Service"' : 'aria-label="' . $requestButtonTitle . '"'; ?>
+                                 class="btn btn-secondary mw-226 request_service_button"
+                                 <?php echo $open_new_tab == 1 ? 'target="_blank"' : ""; ?>>
+                              <?php echo empty($requestButtonTitle) ? "Request Service" : $requestButtonTitle; ?> 
+                              <i class="icon-chevron-right text_18 line_height_18 ms-2"></i>
+                              </a>
+                              <?php if ($noexpiry != 1 && !empty($date)) { ?>
+                              <span class="pt-lg-3 pt-2 d-block coupon_expiry">Expires <?php echo $date; ?></span>
+                              <?php } ?>
+                              <?php if (!empty($footer_heading)) { ?>
+                              <span class="d-block coupon_disclaimer color_white"><?php echo $footer_heading; ?></span>
+                              <?php } ?>
+                           </div>
                         </div>
                         <?php
                            }
